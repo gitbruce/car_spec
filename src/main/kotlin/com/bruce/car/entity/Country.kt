@@ -1,15 +1,36 @@
 package com.bruce.car.entity
 
-import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntity
+import java.util.*
 import javax.persistence.*
 
 @Entity
 @Cacheable
 @Table(name="country")
-class Country : PanacheEntity() {
+@NamedQuery(name = Country.FIND_ALL, query = "SELECT f FROM Country f ORDER BY f.name")
+class Country {
+    companion object {
+        const val FIND_ALL = "Country.findAll"
+    }
+
+    @Id
+    @SequenceGenerator(
+        name = "countrySequence",
+        sequenceName = "known_country_id_seq",
+        allocationSize = 1,
+        initialValue = 10
+    )
+    @GeneratedValue(generator = "countrySequence")
+    var id: Int = 0
+
     @Column(length = 40, unique = true)
     lateinit var name: String
 
-    @Id
-    var countryId: Int = 0
+    @Column
+    @Temporal(TemporalType.TIMESTAMP)
+    var lastUpdate: Date? = null
+
+    @Column
+    @Temporal(TemporalType.TIMESTAMP)
+    var createDate: Date? = null
 }
+
