@@ -1,28 +1,31 @@
 package com.bruce.car.entity
 
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheCompanion
-import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntity
+import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntityBase
 import java.util.*
 import javax.persistence.*
 
 @Entity
 @Cacheable
-@Table(name="car_brand")
-class CarBrand : PanacheEntity() {
-    companion object: PanacheCompanion<CarBrand> {
+@Table(name = "car_brand")
+class CarBrand : PanacheEntityBase {
+    companion object : PanacheCompanion<CarBrand> {
         fun findByName(name: String) = find("name", name).firstResult()
         fun deleteStefs() = delete("name", "Stef")
     }
 
+    @Id
+    var id: Long? = null
+
     @ManyToOne(optional = false)
-    @JoinColumn(name="country_id")
-    lateinit var country: Country
-    lateinit var countryName: String
+    @JoinColumn(name = "country_id")
+    var country: Country? = null
+    var countryName: String = ""
 
     //丰田
     @Column(nullable = false)
-    lateinit var name: String
-    lateinit var logo: String
+    var name: String = ""
+    var logo: String = ""
 
     @Column
     @Temporal(TemporalType.TIMESTAMP)

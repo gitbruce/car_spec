@@ -1,6 +1,7 @@
 package com.bruce.car.resource
 
 import com.bruce.car.entity.Country
+import com.bruce.util.SnowFlake
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.quarkus.panache.common.Sort
 import org.jboss.logging.Logger
@@ -34,8 +35,8 @@ class CountryResource {
     @POST
     @Transactional
     fun create(country: Country): Response {
-        if (country.id != null) {
-            throw WebApplicationException("Id was invalidly set on request.", 422)
+        if (country.id == null) {
+            country.id = SnowFlake().nextId()
         }
         country.createDate = Date()
         country.lastUpdate = Date()
@@ -47,7 +48,7 @@ class CountryResource {
     @Path("{id}")
     @Transactional
     fun update(@PathParam id: Long, country: Country): Country {
-        if (country.name == null) {
+        if (country.name == "") {
             throw WebApplicationException("country Name was not set on request.", 422)
         }
         val entity: Country =

@@ -1,36 +1,39 @@
 package com.bruce.car.entity
 
-import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntity
+import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntityBase
 import java.util.*
 import javax.persistence.*
 
 @Entity
 @Cacheable
-@Table(name="car_model_type")
-class CarModelType : PanacheEntity() {
-    @ManyToOne(optional = false)
-    @JoinColumn(name="brand_id")
-    lateinit var brand: CarBrand
-    lateinit var brandName: String
+@Table(name = "car_model_type")
+class CarModelType : PanacheEntityBase {
+    @Id
+    var id: Long? = null
 
     @ManyToOne(optional = false)
-    @JoinColumn(name="factory_id")
-    lateinit var factory: CarFactory
-    lateinit var factoryName: String
+    @JoinColumn(name = "brand_id")
+    var brand: CarBrand? = null
+    var brandName: String = ""
 
     @ManyToOne(optional = false)
-    @JoinColumn(name="model_id")
-    lateinit var model: CarModel
-    lateinit var modelName: String
+    @JoinColumn(name = "factory_id")
+    var factory: CarFactory? = null
+    var factoryName: String = ""
 
     @ManyToOne(optional = false)
-    @JoinColumn(name="model_year_id")
-    lateinit var modelYear: CarModelYear
+    @JoinColumn(name = "model_id")
+    var model: CarModel? = null
+    var modelName: String = ""
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "model_year_id")
+    var modelYear: CarModelYear? = null
 
     //丰田-雷凌 / 2021款 / 2021款 TNGA 1.5L CVT进取版
     @Column(nullable = false)
-    lateinit var name: String
-    lateinit var state: String
+    var name: String = ""
+    var state: String = ""
 
     var minPrice: Double = 0.0
     var maxPrice: Double = 0.0

@@ -1,29 +1,33 @@
 package com.bruce.car.entity
 
-import io.quarkus.hibernate.orm.panache.kotlin.PanacheCompanion
-import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntity
+import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntityBase
 import java.util.*
 import javax.persistence.*
 
 @Entity
 @Cacheable
-@Table(name="car_model")
-class CarModel : PanacheEntity() {
-    @ManyToOne(optional = false)
-    @JoinColumn(name="brand_id")
-    lateinit var brand: CarBrand
-    lateinit var brandName: String
+@Table(name = "car_model")
+class CarModel : PanacheEntityBase {
+
+    @Id
+    var id: Long? = null
 
     @ManyToOne(optional = false)
-    @JoinColumn(name="factory_id")
-    lateinit var factory: CarFactory
-    lateinit var factoryName: String
+    @JoinColumn(name = "brand_id")
+    var brand: CarBrand? = null
+    var brandName: String = ""
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "factory_id")
+    var factory: CarFactory? = null
+    var factoryName: String = ""
 
     //丰田-雷凌
     @Column(nullable = false)
-    lateinit var name: String
+    var name: String = ""
+
     @Column(nullable = false)
-    lateinit var seriesState: String
+    var seriesState: String = ""
     var seriesOrder: Int = 0
 
     @Column

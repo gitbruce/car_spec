@@ -1,6 +1,7 @@
 package com.bruce.car.resource
 
 import com.bruce.car.entity.CarBrand
+import com.bruce.util.SnowFlake
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.quarkus.panache.common.Sort
 import org.jboss.logging.Logger
@@ -34,8 +35,8 @@ class CarBrandResource {
     @POST
     @Transactional
     fun create(brand: CarBrand): Response {
-        if (brand.id != null) {
-            throw WebApplicationException("Id was invalidly set on request.", 422)
+        if (brand.id == null) {
+            brand.id = SnowFlake().nextId()
         }
         brand.createDate = Date()
         brand.lastUpdate = Date()
@@ -47,13 +48,14 @@ class CarBrandResource {
     @Path("{id}")
     @Transactional
     fun update(@PathParam id: Long, brand: CarBrand): CarBrand {
-        if (brand.name == null) {
+        if (brand.name == "") {
             throw WebApplicationException("brand Name was not set on request.", 422)
         }
         val entity: CarBrand =
             CarBrand.findById(id) ?: throw WebApplicationException("brand with id of $id does not exist.", 404)
         entity.name = brand.name
-        entity.country.id = brand.country.id
+        entity.country?.id = brand.country?.id
+        entity.countryName = brand.countryName
         entity.logo = brand.logo
         entity.lastUpdate = Date()
         return entity
