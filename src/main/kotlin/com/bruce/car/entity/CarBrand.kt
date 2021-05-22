@@ -2,10 +2,7 @@ package com.bruce.car.entity
 
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheCompanion
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntity
-import java.time.LocalDate
-import javax.persistence.Cacheable
-import javax.persistence.Entity
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity
 @Cacheable
@@ -16,6 +13,14 @@ class CarBrand : PanacheEntity() {
         fun deleteStefs() = delete("name", "Stef")
     }
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name="country_id")
+    lateinit var country: Country
+    lateinit var countryName: String
+
+    //丰田
+    @Column(nullable = false)
     lateinit var name: String
-    lateinit var birth: LocalDate
+    lateinit var logo: String
+
 }

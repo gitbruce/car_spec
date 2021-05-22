@@ -9,7 +9,4 @@ import javax.persistence.*
 class Country : PanacheEntity() {
     @Column(length = 40, unique = true)
     lateinit var name: String
-
-    @Id
-    var countryId: Int = 0
 }
