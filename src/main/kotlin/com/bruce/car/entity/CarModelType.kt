@@ -1,6 +1,7 @@
 package com.bruce.car.entity
 
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntity
+import java.util.*
 import javax.persistence.*
 
 @Entity
@@ -34,5 +35,11 @@ class CarModelType : PanacheEntity() {
     var minPrice: Double = 0.0
     var maxPrice: Double = 0.0
 
+    @Column
+    @Temporal(TemporalType.TIMESTAMP)
+    var lastUpdate: Date = Date()
 
+    @Column
+    @Temporal(TemporalType.TIMESTAMP)
+    var createDate: Date = Date()
 }

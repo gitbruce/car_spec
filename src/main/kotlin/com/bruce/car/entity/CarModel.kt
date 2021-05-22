@@ -2,6 +2,7 @@ package com.bruce.car.entity
 
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheCompanion
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntity
+import java.util.*
 import javax.persistence.*
 
 @Entity
@@ -25,5 +26,11 @@ class CarModel : PanacheEntity() {
     lateinit var seriesState: String
     var seriesOrder: Int = 0
 
+    @Column
+    @Temporal(TemporalType.TIMESTAMP)
+    var lastUpdate: Date = Date()
 
+    @Column
+    @Temporal(TemporalType.TIMESTAMP)
+    var createDate: Date = Date()
 }

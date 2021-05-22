@@ -1,6 +1,7 @@
 package com.bruce.car.entity
 
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntity
+import java.util.*
 import javax.persistence.*
 
 @Entity
@@ -15,4 +16,12 @@ class CarFactory : PanacheEntity() {
     //广汽丰田
     @Column(nullable = false)
     lateinit var name : String
+
+    @Column
+    @Temporal(TemporalType.TIMESTAMP)
+    var lastUpdate: Date = Date()
+
+    @Column
+    @Temporal(TemporalType.TIMESTAMP)
+    var createDate: Date = Date()
 }

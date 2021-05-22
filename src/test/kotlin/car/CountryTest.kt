@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test
 
 import io.restassured.RestAssured.given
 import org.hamcrest.CoreMatchers
-import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.core.IsNot
 
 @QuarkusTest
