@@ -38,8 +38,8 @@ class CountryResource {
         if (country.id == null) {
             country.id = SnowFlake().nextId()
         }
-        country.createDate = Date()
-        country.lastUpdate = Date()
+//        country.createDate = Date()
+//        country.lastUpdate = Date()
         country.persist()
         return Response.ok(country).status(201).build()
     }
@@ -54,7 +54,7 @@ class CountryResource {
         val entity: Country =
             Country.findById(id) ?: throw WebApplicationException("country with id of $id does not exist.", 404)
         entity.name = country.name
-        entity.lastUpdate = Date()
+//        entity.lastUpdate = Date()
         return entity
     }
 

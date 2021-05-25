@@ -1,15 +1,12 @@
 package com.bruce.car.entity
 
-import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntityBase
-import java.util.*
+import com.bruce.base.BaseEntity
 import javax.persistence.*
 
 @Entity
 @Cacheable
 @Table(name = "car_model_type")
-class CarModelType : PanacheEntityBase {
-    @Id
-    var id: Long? = null
+class CarModelType : BaseEntity() {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "brand_id")
@@ -38,11 +35,4 @@ class CarModelType : PanacheEntityBase {
     var minPrice: Double = 0.0
     var maxPrice: Double = 0.0
 
-    @Column
-    @Temporal(TemporalType.TIMESTAMP)
-    var lastUpdate: Date = Date()
-
-    @Column
-    @Temporal(TemporalType.TIMESTAMP)
-    var createDate: Date = Date()
 }

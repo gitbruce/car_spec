@@ -38,8 +38,8 @@ class CarBrandResource {
         if (brand.id == null) {
             brand.id = SnowFlake().nextId()
         }
-        brand.createDate = Date()
-        brand.lastUpdate = Date()
+//        brand.createDate = Date()
+//        brand.lastUpdate = Date()
         brand.persist()
         return Response.ok(brand).status(201).build()
     }
@@ -57,7 +57,6 @@ class CarBrandResource {
         entity.country?.id = brand.country?.id
         entity.countryName = brand.countryName
         entity.logo = brand.logo
-        entity.lastUpdate = Date()
         return entity
     }
 
