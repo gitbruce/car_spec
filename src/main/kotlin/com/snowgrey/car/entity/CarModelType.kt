@@ -1,12 +1,17 @@
-package com.bruce.car.entity
+package com.snowgrey.car.entity
 
-import com.bruce.base.BaseEntity
+import com.snowgrey.base.BaseEntity
+import io.quarkus.hibernate.orm.panache.kotlin.PanacheCompanion
 import javax.persistence.*
 
 @Entity
 @Cacheable
 @Table(name = "car_model_type")
 class CarModelType : BaseEntity() {
+    companion object : PanacheCompanion<CarModelType> {
+        fun findByName(name: String) = CarModelType.find("name", name).firstResult()
+        fun deleteStefs() = CarModelType.delete("name", "Stef")
+    }
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "brand_id")

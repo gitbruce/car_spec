@@ -1,4 +1,4 @@
-package com.bruce.sample.resource
+package com.snowgrey.sample.resource
 
 import javax.inject.Inject
 import javax.ws.rs.GET
@@ -6,10 +6,8 @@ import javax.ws.rs.Path
 import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
 
-import com.bruce.sample.service.ReactiveGreetingService
-import io.smallrye.mutiny.Multi
+import com.snowgrey.sample.service.ReactiveGreetingService
 import io.smallrye.mutiny.Uni
-import org.reactivestreams.Publisher
 
 @Path("/hello")
 class ReactiveGreetingResource {

@@ -1,4 +1,4 @@
-package com.bruce.base
+package com.snowgrey.base
 
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntityBase
 import org.hibernate.annotations.CreationTimestamp

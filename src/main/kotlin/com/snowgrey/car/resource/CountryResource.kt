@@ -1,13 +1,12 @@
-package com.bruce.car.resource
+package com.snowgrey.car.resource
 
-import com.bruce.car.entity.Country
-import com.bruce.util.SnowFlake
+import com.snowgrey.car.entity.Country
+import com.snowgrey.util.SnowFlake
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.quarkus.panache.common.Sort
 import org.jboss.logging.Logger
 import org.jboss.resteasy.annotations.jaxrs.PathParam
 import java.lang.Exception
-import java.util.*
 import javax.enterprise.context.ApplicationScoped
 import javax.inject.Inject
 import javax.transaction.Transactional

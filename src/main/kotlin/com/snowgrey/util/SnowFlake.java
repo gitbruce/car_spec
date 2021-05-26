@@ -1,4 +1,4 @@
-package com.bruce.util;
+package com.snowgrey.util;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 

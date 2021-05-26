@@ -1,4 +1,4 @@
-package com.bruce.car.resource
+package com.snowgrey.car.resource
 
 import javax.ws.rs.GET
 import javax.ws.rs.Path

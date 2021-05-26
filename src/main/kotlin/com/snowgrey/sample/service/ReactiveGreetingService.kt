@@ -1,10 +1,8 @@
-package com.bruce.sample.service
+package com.snowgrey.sample.service
 
-import io.smallrye.mutiny.Multi
 import io.smallrye.mutiny.Uni
 
 import javax.enterprise.context.ApplicationScoped
-import java.time.Duration
 
 @ApplicationScoped
 class ReactiveGreetingService {
