@@ -1,5 +1,6 @@
 package com.snowgrey.base
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntityBase
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
