@@ -1,9 +1,11 @@
 package com.snowgrey.car.service
 
-abstract class BaseService<T> {
-    abstract fun get(): List<T>
-    abstract fun getSingle(id: Long): T
-    abstract fun create(item: T): T
-    abstract fun update(id: Long, item: T): T
-    abstract fun delete(id: Long)
+import javax.enterprise.context.ApplicationScoped
+
+interface BaseService<T> {
+    fun getAll(): List<T>
+    fun getSingle(id: Long): T?
+    fun create(item: T): T
+    fun update(id: Long, item: T): T?
+    fun delete(id: Long)
 }

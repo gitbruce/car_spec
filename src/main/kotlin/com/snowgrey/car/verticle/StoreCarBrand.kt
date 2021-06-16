@@ -15,7 +15,6 @@ class StoreCarBrand : AbstractVerticle() {
         vertx.eventBus().consumer<String>(CarBrandPojo::class.qualifiedName) { msg ->
             println("received message:" + msg.body())
             val client = WebClient.create(vertx)
-            client.post()
         }
     }
 }
